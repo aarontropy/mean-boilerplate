@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "scripts": {
+            "adminCore": {
+                "cwd": "public/lib",
+                "files": [
+                    "angular/angular.js"
+                ]
+            }
+        },
+        "styles": {
+            "site": {
+                "cwd": "/public",
+                "files": [
+                    "css/site.css"
+                ]
+            }
+        }
+    }
+}

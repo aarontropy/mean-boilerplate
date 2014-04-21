@@ -1,0 +1,15 @@
+{
+    "node": true,
+    "curly": true,
+    "eqnull": true,
+    "eqeqeq": true,
+    "undef": true,
+    "strict": true,
+    "proto": true,
+    "globals": {
+        "jQuery": true,
+        "module": true,
+        "exports": true,
+        "angular": true
+    }
+}

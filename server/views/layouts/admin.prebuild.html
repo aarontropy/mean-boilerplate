@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Notewise Administration{% endblock %}</title>
+
+    <!-- build:style admin -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/lib/select2/select2.css" rel="stylesheet">
+    <link href="/css/sb-admin.css" rel="stylesheet">
+    <!-- /build -->
+
+</head>
+
+<body ng-app="notewiseAdmin">
+    {% block body %}{% endblock %}
+
+    
+
+    <!-- Core Scripts - Include with every page -->
+    <!-- build:script adminCore -->
+    <!-- /build -->
+
+    <!-- build:script adminApp -->
+    <!-- /build -->
+
+    {% block end_js %}{% endblock %}
+
+</body>
+
+</html>
