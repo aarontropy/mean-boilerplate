@@ -70,7 +70,6 @@ module.exports = exports = function(grunt) {
                 options: {
                     beautify: true,
                     relative: false,
-                    prefix: '<%= assets.dev.prefix %>',
                     scripts: {
                         site: {},
                         adminCore: {
@@ -81,9 +80,13 @@ module.exports = exports = function(grunt) {
                     },
                     styles: {
                         site: '<%= assets.dev.styles.site %>',
-                        admin: {
+                        admin_vendor: {
                             cwd: '<%= assets.dev.dest %>',
-                            files: '<%= assets.dev.styles.admin %>'
+                            files: ['<%= assets.dev.styles.admin %>']
+                        },
+                        admin: {
+                            cwd: 'public/',
+                            files: 'css/admin.css'
                         }
                     },
                     sections: {},

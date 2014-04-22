@@ -1,11 +1,10 @@
 {
     "dev": {
         "cwd": "bower_components/",
-        "dest": "public/vendor/",
-        "prefix": "/vendor",
+        "dest": "public/",
         "scripts": {
             "adminCore": [
-                "angular/angular.js"
+                "vendor/angular/angular.js"
             ]
         },
         "styles": {
@@ -13,9 +12,9 @@
                 "css/site.css"
             ],
             "admin": [
-                "font-awesome/css/font-awesome.min.css",
-                "bootstrap/dist/css/bootstrap.min.css",
-                "select2/select2.css"
+                "vendor/font-awesome/css/font-awesome.min.css",
+                "vendor/bootstrap/dist/css/bootstrap.min.css",
+                "vendor/select2/select2.css"
             ]
         }
     }
