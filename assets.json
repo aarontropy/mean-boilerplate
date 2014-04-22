@@ -1,20 +1,16 @@
 {
     "dev": {
+        "cwd": "bower_components/",
+        "dest": "public/vendor/",
         "scripts": {
-            "adminCore": {
-                "cwd": "public/lib",
-                "files": [
-                    "angular/angular.js"
-                ]
-            }
+            "adminCore": [
+                "angular/angular.js"
+            ]
         },
         "styles": {
-            "site": {
-                "cwd": "/public",
-                "files": [
-                    "css/site.css"
-                ]
-            }
+            "site": [
+                "css/site.css"
+            ]
         }
     }
 }

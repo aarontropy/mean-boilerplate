@@ -1,11 +1,28 @@
 'use strict';
 
 module.exports = exports = function(grunt) {
-	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-		assets: grunt.file.readJSON('assets.json'),
+    // var assets = {
+    //     dev: {
+    //         cwd: "bower_components/",
+    //         dest: "public/vendor/",
+    //         scripts: {
+    //             adminCore: [
+    //                 "angular/angular.js"
+    //             ]
+    //         },
+    //         styles: {
+    //             site: [
+    //                 "css/site.css"
+    //             ]
+    //         }
+    //     }
+    // }
 
-		watch: {
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        assets: grunt.file.readJSON('assets.json'),
+
+        watch: {
             dev: {
                 files: ['public/**/*.js', 'public/lib/**/*.js', 'assets.json'],
                 tasks: ['htmlbuild']
@@ -13,7 +30,7 @@ module.exports = exports = function(grunt) {
         },
         jshint: {
             all: {
-                src: ['server/**/*.js', 'public/**/*.js', 'gruntfile.js', 'index.js'],
+                src: ['server/**/*.js', 'public/**/*.js', '!public/vendor/**', 'gruntfile.js', 'index.js'],
                 options: {
                     jshintrc: 'jshintrc.json'
                 }
@@ -44,36 +61,61 @@ module.exports = exports = function(grunt) {
             }
         },
         htmlbuild: {
-        	dev: {
-        		src: 'server/views/layouts/default.prebuild.html',
-        		dest: 'server/views/layouts/default.html',
-        		options: {
-        			beautify: true,
-        			scripts: {
+            dev: {
+                src: [
+                    'server/views/layouts/prebuild/default.html',
+                    'server/views/layouts/prebuild/admin.html'
+                ],
+                dest: 'server/views/layouts/',
+                options: {
+                    beautify: true,
+                    scripts: {
                         site: {},
-                        adminCore: '<%= assets.dev.scripts.adminCore %>',
+                        adminCore: {
+                            cwd: '<%= assets.dev.dest %>',
+                            files: '<%= assets.dev.scripts.adminCore %>'
+                        },
                         adminApp: {}
                     },
-        			styles: {
+                    styles: {
                         site: '<%= assets.dev.styles.site %>',
                         admin: {}
                     },
-        			sections: {},
-        			data: {}
-        		}
-        	}
+                    sections: {},
+                    data: {}
+                }
+            }
+        },
+        copy: {
+            dev: {
+                nonull: true,
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= assets.dev.cwd %>',
+                        dest: '<%= assets.dev.dest %>',
+                        src: ['<%= assets.dev.scripts.adminCore %>']
+                    }
+                ]
+            }
         }
 
-	});
+    });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-html-build');
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
-    // grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
 
     grunt.registerTask('default', ['jshint', 'htmlbuild:dev', 'concurrent:dev']);
-		
+    grunt.registerTask('build', ['copy:dev']);
+    grunt.registerTask('test', 'test functino', function() {
+        grunt.log.writeln(grunt.config('assets.dev.cwd'));
+        grunt.log.writeln(grunt.config('assets.dev.dest'));
+        grunt.log.writeln(grunt.config('assets.dev.scripts.adminCore'));
+    });
+        
 };
