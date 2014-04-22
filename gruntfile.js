@@ -1,31 +1,15 @@
 'use strict';
 
 module.exports = exports = function(grunt) {
-    // var assets = {
-    //     dev: {
-    //         cwd: "bower_components/",
-    //         dest: "public/vendor/",
-    //         scripts: {
-    //             adminCore: [
-    //                 "angular/angular.js"
-    //             ]
-    //         },
-    //         styles: {
-    //             site: [
-    //                 "css/site.css"
-    //             ]
-    //         }
-    //     }
-    // }
-
+    
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         assets: grunt.file.readJSON('assets.json'),
 
         watch: {
             dev: {
-                files: ['public/**/*.js', 'public/lib/**/*.js', 'assets.json'],
-                tasks: ['htmlbuild']
+                files: ['public/**/*.js', 'assets.json'],
+                tasks: ['htmlbuild:dev']
             }
         },
         jshint: {
@@ -76,7 +60,10 @@ module.exports = exports = function(grunt) {
                             cwd: '<%= assets.dev.dest %>',
                             files: '<%= assets.dev.scripts.adminCore %>'
                         },
-                        adminApp: {}
+                        adminApp: {
+                            cwd: 'public/',
+                            files: 'admin/**/*.js'
+                        }
                     },
                     styles: {
                         site: '<%= assets.dev.styles.site %>',

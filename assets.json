@@ -3,8 +3,11 @@
         "cwd": "bower_components/",
         "dest": "public/",
         "scripts": {
-            "adminCore": [
-                "vendor/angular/angular.js"
+            "adminCore": [ 
+                "vendor/angular/angular.js",
+                "vendor/bootstrap/dist/js/bootstrap.js",
+                "vendor/select2/select2.js",
+                "vendor/tinymce/js/tinymce/tinymce.min.js"
             ]
         },
         "styles": {
