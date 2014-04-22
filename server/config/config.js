@@ -21,7 +21,7 @@ var all = {
     models: utils.walker(modelsPath, null, function(file) { 
         require(file); 
     }),
-    routes: utils.walker(routesPath, ['middleware', 'controllers'], function(file, app, passport, config) {
+    routes: utils.walker(routesPath, ['middlewares', 'controllers'], function(file, app, passport, config) {
         var route = require(file);
         if (typeof route === 'function') {
             require(file)(app, passport, config);

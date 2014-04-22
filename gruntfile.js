@@ -116,4 +116,20 @@ module.exports = exports = function(grunt) {
         grunt.log.writeln(grunt.config('assets.dev.scripts.adminCore'));
     });
         
+    /***
+    To install TinyMCE:
+    1. Install Node.js
+    2. Open a console and go to the project directory
+    3. Write "npm i -g jake" to install the jake tool globally.
+    4. Write "npm i" to install all package dependencies
+    4. Build TinyMCE by writing "jake"
+    ***/
+
+    /***
+    To install 
+    1. Go to the project directory
+    2. npm install
+    3. grunt build or
+    4. something like grunt build:modal:tabs:alert:popover:dropdownToggle:buttons:progressbar
+    ***/
 };

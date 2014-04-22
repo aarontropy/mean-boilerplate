@@ -1,0 +1,35 @@
+<nav class="navbar-default navbar-static-side" role="navigation" ng-controller="SideBarController">
+    <div class="sidebar-collapse">
+
+        <ul class="nav" id="side-menu">
+
+            <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+                <!-- /input-group -->
+            </li>
+
+            <li> <a ui-sref="dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a> </li>
+            <li> <a ui-sref="users"><i class="fa fa-users fa-fw"></i> Users</a> </li>
+
+            <li>
+                <a href="#" ng-click="sections.news.open=!sections.news.open"><i class="fa fa-list-alt fa-fw"></i> News<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="!sections.news.open">
+                    <li> <a ui-sref="post-detail">New Post</a> </li>
+                    <li> <a ui-sref="posts">List Posts</a> </li>
+                </ul>
+            </li>
+            <li> <a ui-sref="configuration"><i class="fa fa-gears fa-fw"></i> Site Settings</a> </li>
+
+        </ul>
+        <!-- /#side-menu -->
+    </div>
+    <!-- /.sidebar-collapse -->
+</nav>
+<!-- /.navbar-static-side -->
