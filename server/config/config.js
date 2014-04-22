@@ -22,7 +22,12 @@ var all = {
         require(file); 
     }),
     routes: utils.walker(routesPath, ['middleware', 'controllers'], function(file, app, passport, config) {
-        require(file)(app, passport, config);
+        var route = require(file);
+        if (typeof route === 'function') {
+            require(file)(app, passport, config);
+        } else {
+            console.log('ERROR in routes: ' + file + ' is not a function');
+        }
     })
 };
 

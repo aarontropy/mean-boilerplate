@@ -69,6 +69,8 @@ module.exports = exports = function(grunt) {
                 dest: 'server/views/layouts/',
                 options: {
                     beautify: true,
+                    relative: false,
+                    prefix: '<%= assets.dev.prefix %>',
                     scripts: {
                         site: {},
                         adminCore: {
@@ -79,7 +81,10 @@ module.exports = exports = function(grunt) {
                     },
                     styles: {
                         site: '<%= assets.dev.styles.site %>',
-                        admin: {}
+                        admin: {
+                            cwd: '<%= assets.dev.dest %>',
+                            files: '<%= assets.dev.styles.admin %>'
+                        }
                     },
                     sections: {},
                     data: {}
@@ -94,7 +99,10 @@ module.exports = exports = function(grunt) {
                         expand: true,
                         cwd: '<%= assets.dev.cwd %>',
                         dest: '<%= assets.dev.dest %>',
-                        src: ['<%= assets.dev.scripts.adminCore %>']
+                        src: [
+                            '<%= assets.dev.scripts.adminCore %>',
+                            '<%= assets.dev.styles.admin %>'
+                        ]
                     }
                 ]
             }
