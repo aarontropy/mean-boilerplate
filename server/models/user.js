@@ -84,7 +84,7 @@ User.find({ roles: 'admin' }).count().exec(function(err, n) {
         console.log('Creating new Admin');
         var admin = new User({
             name: 'admin',
-            email: 'admin@notewise.com',
+            email: 'admin@admin.com',
             roles: ['admin'],
             password: 'admin'
         });

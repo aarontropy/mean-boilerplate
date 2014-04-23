@@ -8,6 +8,9 @@ module.exports = exports = function(grunt) {
 
         watch: {
             dev: {
+                files: ['<%= jshint.all.src %>'],
+                tasks: ['jshint']
+            }
         },
         jshint: {
             all: {

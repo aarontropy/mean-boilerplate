@@ -15,4 +15,4 @@ module.exports = exports = function(passport, config) {
     require('./routes')(app, passport, config);
 
     return app;
-}
+};

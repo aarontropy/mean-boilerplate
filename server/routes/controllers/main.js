@@ -8,7 +8,7 @@ exports.index = function(req,res) {
 };
 
 exports.loginPage = function(req, res) {
-    res.render('admin/login');
+    res.render('login');
 };
 
 /**
@@ -22,12 +22,12 @@ exports.loginPage = function(req, res) {
 exports.login = function(req, res, next, passport) {
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
-        if (!user) { return res.redirect('/'); }
+        if (!user) { return res.send(401, 'Username or password incorrect'); }
         req.logIn(user, function(err) {
             if (err) { return next(err); }
-            return res.redirect(req.query.redirect || '/');
+            return res.send('success');
         });
-    })(req, res, next)
+    })(req, res, next);
 };
 
 /**
@@ -49,4 +49,4 @@ exports.logout = function(req, res) {
  */
 exports.me = function(req, res) {
     return res.json(req.user);
-}
+};

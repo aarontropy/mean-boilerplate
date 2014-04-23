@@ -19,7 +19,7 @@ exports.requiresLogin = function(req, res, next) {
  */
 exports.requiresAdmin = function(req, res, next) {
     if (!req.isAuthenticated() || !req.user.hasRole('admin')) {
-        return res.redirect('/login');
+        return res.redirect('/login?redirect=/admin');
     }
     if (!res.locals.user) {
         res.locals.user = req.user;

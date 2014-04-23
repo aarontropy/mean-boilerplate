@@ -3,10 +3,11 @@
 
 module.exports = exports = function(app, passport, config) {
     var adminApp = require('../apps/admin')(passport, config),
-        main = require('./controllers/main');
+        main = require('./controllers/main'),
+        auth = require('./middlewares/authorization');
 
     // Mount the admin application
-    app.use('/admin', adminApp);
+    app.use('/admin', auth.requiresAdmin).use('/admin', adminApp);
 
     app.get('/', main.index);
     app.get('/login', main.loginPage);

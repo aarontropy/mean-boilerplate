@@ -1,4 +1,12 @@
 {
+    "site_js": {
+        "public/build/site_js": [
+            "public/lib/angular/angular.js",
+            "public/js/app.js",
+            "public/js/controllers/**/*.js",
+            "public/js/services/**/*.js"
+        ]
+    },
     "admin_js": {
         "public/build/admin_vendor.js": [
             "public/lib/jquery/dist/jquery.js",
