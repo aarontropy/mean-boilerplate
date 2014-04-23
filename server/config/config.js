@@ -3,6 +3,7 @@
 var path = require('path'),
     fs = require('fs'),
     utils = require('./utils'),
+    assetmanager = require('assetmanager'),
     _ = require('lodash');
 
 // Make sure that the NODE_ENV has a value
@@ -10,6 +11,12 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var modelsPath = path.normalize(__dirname + '/../models');
 var routesPath = path.normalize(__dirname + '/../routes');
+var assets = require('./assets.json');
+assetmanager.init(_.extend({
+        debug: (process.env.NODE_ENV !== 'production'),
+        webroot: 'public'
+    }, assets)
+);
 
 var all = {
     appPath: path.normalize(__dirname + '/../..'),
@@ -18,6 +25,7 @@ var all = {
 
     express: require('./express'),
     passport: require('./passport'),
+    assetmanager: assetmanager,
     models: utils.walker(modelsPath, null, function(file) { 
         require(file); 
     }),

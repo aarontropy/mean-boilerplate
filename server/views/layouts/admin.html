@@ -8,25 +8,26 @@
 
     <title>{% block title %}Notewise Administration{% endblock %}</title>
 
-
-
-    <link type="text/css" rel="stylesheet" href="css/admin.css" />
+    {% for file in assets.admin_css %}
+        <link rel="stylesheet" href="{{file}}">
+    {% endfor %}
 
 </head>
 
 <body>
     {% block content %}{% endblock %}
 
+    
 
+    {% for file in assets.admin_js %}
+        <script type="text/javascript" src="{{ file }}"></script>
+    {% endfor %}
 
-    <!-- Core Scripts - Include with every page -->
-
-
-    <script type="text/javascript" src="admin/app.js"></script>
-    <script type="text/javascript" src="admin/controllers/home.js"></script>
+    {% for file in assets.admin_app %}
+        <script type="text/javascript" src="{{ file }}"></script>
+    {% endfor %}
 
     {% block end_js %}{% endblock %}
 
 </body>
-
 </html>

@@ -4,7 +4,7 @@ module.exports = exports = function(grunt) {
     
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        assets: grunt.file.readJSON('assets.json'),
+        assets: grunt.file.readJSON('server/config/assets.json'),
 
         watch: {
             dev: {
@@ -14,7 +14,7 @@ module.exports = exports = function(grunt) {
         },
         jshint: {
             all: {
-                src: ['server/**/*.js', 'public/**/*.js', '!public/vendor/**', 'gruntfile.js', 'index.js'],
+                src: ['server/**/*.js', 'public/**/*.js', '!public/lib/**', '!public/build/**', 'gruntfile.js', 'index.js'],
                 options: {
                     jshintrc: 'jshintrc.json'
                 }
@@ -44,57 +44,22 @@ module.exports = exports = function(grunt) {
                 }
             }
         },
-        htmlbuild: {
-            dev: {
-                src: [
-                    'server/views/layouts/prebuild/default.html',
-                    'server/views/layouts/prebuild/admin.html'
-                ],
-                dest: 'server/views/layouts/',
-                options: {
-                    beautify: true,
-                    relative: false,
-                    scripts: {
-                        site: {},
-                        adminCore: {
-                            cwd: '<%= assets.dev.dest %>',
-                            files: '<%= assets.dev.scripts.adminCore %>'
-                        },
-                        adminApp: {
-                            cwd: 'public/',
-                            files: 'admin/**/*.js'
-                        }
-                    },
-                    styles: {
-                        site: '<%= assets.dev.styles.site %>',
-                        admin_vendor: {
-                            cwd: '<%= assets.dev.dest %>',
-                            files: ['<%= assets.dev.styles.admin %>']
-                        },
-                        admin: {
-                            cwd: 'public/',
-                            files: 'css/admin.css'
-                        }
-                    },
-                    sections: {},
-                    data: {}
-                }
-            }
-        },
         copy: {
             dev: {
-                nonull: true,
-                files: [
-                    {
-                        expand: true,
-                        cwd: '<%= assets.dev.cwd %>',
-                        dest: '<%= assets.dev.dest %>',
-                        src: [
-                            '<%= assets.dev.scripts.adminCore %>',
-                            '<%= assets.dev.styles.admin %>'
-                        ]
-                    }
-                ]
+            }
+        },
+        uglify: {
+            production: {
+                options: {
+                    mangle: true,
+                    compress: true
+                },
+                files: '<%= assets.admin_app %>'
+            }
+        },
+        cssmin: {
+            combine: {
+                files: ['<%= assets.site_style %>', '<%= assets.admin_style %>']
             }
         }
 
@@ -102,14 +67,15 @@ module.exports = exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-html-build');
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
 
-    grunt.registerTask('default', ['jshint', 'htmlbuild:dev', 'concurrent:dev']);
-    grunt.registerTask('build', ['copy:dev']);
+    grunt.registerTask('default', ['jshint',  'concurrent:dev']);
+    grunt.registerTask('build', ['cssmin', 'uglify']);
     grunt.registerTask('test', 'test functino', function() {
         grunt.log.writeln(grunt.config('assets.dev.cwd'));
         grunt.log.writeln(grunt.config('assets.dev.dest'));

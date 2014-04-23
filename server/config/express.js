@@ -5,7 +5,8 @@ var swig = require('swig'),
     bodyParser = require('body-parser'),
     path = require('path'),
     express = require('express'),
-    session = require('express-session');
+    session = require('express-session'),
+    _ = require('lodash');
 
 module.exports = exports = function(app, passport, config) {
 
@@ -29,7 +30,10 @@ module.exports = exports = function(app, passport, config) {
 
     // Make the path available to templates
     app.use(function(req, res, next) {
-        res.locals.path = req.path;
+        res.locals = _.extend({
+            path: req.path,
+            assets: config.assetmanager.assets 
+        }, res.locals);
         next();
     });
 

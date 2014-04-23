@@ -1,0 +1,42 @@
+{
+    "admin_js": {
+        "public/build/admin_vendor.js": [
+            "public/lib/jquery/dist/jquery.js",
+            "public/lib/bootstrap/dist/js/bootstrap.js",
+            "public/lib/select2/select2.js",
+            "public/lib/tinymce/js/tinymce/tinymce.js"
+        ],
+        "public/build/admin_angular.js" : [
+            "public/lib/angular/angular.js",
+            "public/lib/angular-ui-router/release/angular-ui-router.js",
+            "public/lib/angular-resource/angular-resource.js",
+            "public/lib/angular-ui-tinymce/src/tinymce.js",
+            "public/lib/angular-ui-select2/src/select2.js",
+            "public/lib/angular-ui-bootstrap/dist/ui-bootstrap-tpls-0.10.0.js"
+        ]
+    },
+    "admin_app": {
+        "public/build/admin_app.js": [
+            "public/admin/app.js"
+        ],
+        "public/build/admin_app_support.js": [
+            "public/admin/**/*.js",
+            "!public/admin/app.js"
+        ]
+    },
+    "site_css": {
+        "public/build/css/site.css": [
+            "public/css/site.css"
+        ]
+    },
+    "admin_css": {
+        "public/build/admin/css/vendor.css": [
+            "public/lib/font-awesome/css/font-awesome.min.css",
+            "public/lib/bootstrap/dist/css/bootstrap.min.css",
+            "public/lib/select2/select2.css"
+        ],
+        "public/build/admin/css/admin.css": [
+            "public/css/admin.css"
+        ]
+    }
+}
