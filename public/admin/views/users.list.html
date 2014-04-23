@@ -14,7 +14,7 @@
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.lastLog | date : 'MMMM d, y h:mm a' }}</td>
-                    <td ng-show="me.isAdmin">
+                    <td>
                         <button id="cmd-edit" ng-click="edit(user)"><i class="fa fa-edit fa-fw"></i></button>
                         <button id="cmd-del" ng-click="delete(user)"><i class="fa fa-cut fa-fw"></i></button>
                     </td>

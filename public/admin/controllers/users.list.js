@@ -11,9 +11,9 @@ function($scope, $state, $window, api) {
 
     $scope.edit = function(user) {
         if (user) {
-            $state.go('user-detail', {id: user._id });
+            $state.go('users-detail', {id: user._id });
         } else {
-            $state.go('user-detail-new');
+            $state.go('users-detail-new');
         }
     };
 
