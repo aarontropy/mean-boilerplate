@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('admin', ['ui.router'])
+angular.module('admin', ['site', 'ui.router'])
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     // Unmatched Urls
     $urlRouterProvider.otherwise('/');

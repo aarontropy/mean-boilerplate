@@ -22,7 +22,7 @@ exports.loginPage = function(req, res) {
 exports.login = function(req, res, next, passport) {
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
-        if (!user) { return res.send(401, 'Username or password incorrect'); }
+        if (!user) { return res.json(401, {error: 'Username or password incorrect'}); }
         req.logIn(user, function(err) {
             if (err) { return next(err); }
             return res.send('success');

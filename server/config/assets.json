@@ -2,6 +2,7 @@
     "site_js": {
         "public/build/site_js": [
             "public/lib/angular/angular.js",
+            "public/lib/angular-resource/angular-resource.js",
             "public/js/app.js",
             "public/js/controllers/**/*.js",
             "public/js/services/**/*.js"
@@ -25,6 +26,9 @@
     },
     "admin_app": {
         "public/build/admin_app.js": [
+            "public/js/app.js",
+            "public/js/controllers/**/*.js",
+            "public/js/services/**/*.js",
             "public/admin/app.js",
             "public/admin/controllers/**/*.js",
             "public/admin/services/**/*.js"

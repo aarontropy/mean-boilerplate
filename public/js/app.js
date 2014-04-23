@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('site', []);
+angular.module('site', ['ngResource']);

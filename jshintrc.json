@@ -6,6 +6,7 @@
     "undef": true,
     "strict": true,
     "proto": true,
+    "supernew": true,
     "globals": {
         "jQuery": true,
         "module": true,

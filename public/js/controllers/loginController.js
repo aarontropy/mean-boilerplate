@@ -7,17 +7,14 @@ angular.module('site')
 
     $scope.login = function() {
 
-        Auth.login($scope.credentials)
-        .success(function(data, status, headers, config) {
+        var success = function(response) {
             $window.location.href = Query.q('redirect') || '/';
-        })
-        .error(function(data, status, headers, config) {
-            console.log("status: ", status);
-            console.log("data: ", data);
-            console.log("headers: ", headers);
-            console.log("config: ", config);
-            $scope.errorMessage = data;
-            console.log($scope.errorMessage);
-        });
+        };
+        var failure = function(response) {
+            $scope.errorMessage = response.error;
+            console.log("Error: ", response);
+        };
+
+        Auth.login($scope.credentials, success, failure);
     };
 }]);
