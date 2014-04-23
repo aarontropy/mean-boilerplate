@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('site')
-.factory('Query', ['$window', function($window) {
+.factory('query', ['$window', function($window) {
     var query = {};
 
     /**

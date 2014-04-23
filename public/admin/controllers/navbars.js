@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('admin')
-.controller('NavBarController', ['$scope', 'Auth', function($scope, Auth) {
-    $scope.me = Auth.me();
+.controller('NavBarController', ['$scope', 'auth', function($scope, auth) {
+    $scope.me = auth.me();
     $scope.show = function() {
         console.log($scope.me);
     };
 }])
-.controller('SideBarController', ['$scope', 'Auth', function($scope, Auth) {
+.controller('SideBarController', ['$scope', 'auth', function($scope, auth) {
     $scope.sections = {
         news: { open: false }
     };

@@ -11,5 +11,10 @@ angular.module('admin', ['site', 'ui.router'])
         templateUrl: '/admin/views/dashboard.html',
         controller: 'HomeController'
     })
+    .state('users', {
+        url: '/users',
+        templateUrl: '/admin/views/users.list.html',
+        controller: 'UserListController'
+    })
     ;
 }]);

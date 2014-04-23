@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('site')
-.factory('Auth', ['$resource', function($resource) {
+.factory('auth', ['$resource', function($resource) {
     return {
         /**
          * Get user data

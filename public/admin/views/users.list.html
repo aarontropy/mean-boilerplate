@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Last Login</th>
+                    <th ng-show="me.isAdmin"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users">
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.lastLog | date : 'MMMM d, y h:mm a' }}</td>
+                    <td ng-show="me.isAdmin">
+                        <button id="cmd-edit" ng-click="edit(user)"><i class="fa fa-edit fa-fw"></i></button>
+                        <button id="cmd-del" ng-click="delete(user)"><i class="fa fa-cut fa-fw"></i></button>
+                    </td>
+                </tr>
+                <tr ng-show="me.isAdmin">
+                    <td></td><td></td><td></td>
+                    <td>
+                        <button ng-click="edit()"><i class="fa fa-plus fa-fw"></i></button>
+                    </td>
+            </tbody>
+        </table>
+    </div>
+</div>
