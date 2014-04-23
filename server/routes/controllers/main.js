@@ -1,9 +1,52 @@
 'use strict';
 
+
+
+
 exports.index = function(req,res) {
     res.render('index');
 };
 
-exports.login = function(req, res) {
+exports.loginPage = function(req, res) {
     res.render('admin/login');
 };
+
+/**
+ * Log a user in and redirect
+ * @param  {request}   req
+ * @param  {response}   res
+ * @param  {Function} next
+ * @param  {passport instance}   passport
+ * @return {none or next()}
+ */
+exports.login = function(req, res, next, passport) {
+    passport.authenticate('local', function(err, user, info) {
+        if (err) { return next(err); }
+        if (!user) { return res.redirect('/'); }
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            return res.redirect(req.query.redirect || '/');
+        });
+    })(req, res, next)
+};
+
+/**
+ * Log a user out and redirect
+ * @param  {request} req
+ * @param  {response} res
+ * @return {none}
+ */
+exports.logout = function(req, res) {
+    req.logout();
+    res.redirect('/');
+};
+
+/**
+ * Get information for the currently logged-in user
+ * @param  {request} req
+ * @param  {response} res
+ * @return {string (JSON)}
+ */
+exports.me = function(req, res) {
+    return res.json(req.user);
+}
