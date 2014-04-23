@@ -17,11 +17,9 @@
     },
     "admin_app": {
         "public/build/admin_app.js": [
-            "public/admin/app.js"
-        ],
-        "public/build/admin_app_support.js": [
-            "public/admin/**/*.js",
-            "!public/admin/app.js"
+            "public/admin/app.js",
+            "public/admin/controllers/**/*.js",
+            "public/admin/services/**/*.js"
         ]
     },
     "site_css": {

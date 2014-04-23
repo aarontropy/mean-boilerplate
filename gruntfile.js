@@ -8,9 +8,6 @@ module.exports = exports = function(grunt) {
 
         watch: {
             dev: {
-                files: ['public/**/*.js', 'assets.json'],
-                tasks: ['htmlbuild:dev']
-            }
         },
         jshint: {
             all: {

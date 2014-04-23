@@ -2,8 +2,14 @@
 
 
 module.exports = exports = function(app, passport, config) {
-    var index = require('./controllers/index');
+    var adminApp = require('../apps/admin')(passport, config),
+        main = require('./controllers/main');
 
-    app.get('/', index.render);
+    // Mount the admin application
+    app.use('/admin', adminApp);
+
+    app.get('/', main.index);
+    app.get('/login', main.login);
+
 
 };

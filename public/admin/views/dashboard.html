@@ -2,23 +2,12 @@
     <div class="col-lg-8">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> 14-Day Traffic
+                <i class="fa fa-bar-chart-o fa-fw"></i> A Panel
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
                 
-                <div google-chart chart="visitChart" style="{{cssStyle}}" ng-show="visitChart.data"></div>
-                <div ng-hide="visitChart.data">Loading Google Analytics...</div>
-
-                <!-- <button ng-click="show()">Show</button> -->
-
-                <script type="text/javascript">
-                    function googleClientLoad() {
-                        angular.element('*[ng-app]').injector().get('ga').onClientLoad();
-                    };
-                </script>
-                <!-- Load the Client Library. Use the onload parameter to specify a callback function -->
-                <script src="https://apis.google.com/js/client.js?onload=googleClientLoad"></script>
+                
 
 
             </div>
@@ -33,16 +22,12 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-search fa-fw"></i> Top Keywords
+                <i class="fa fa-search fa-fw"></i> Another Panel
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <div class="list-group">
-                    <a href="#" class="list-group-item" ng-repeat="kw in topKeywords">
-                        <span class="badge">{{kw[2]}}</span>
-                        "{{kw[1]}}"
-                    </a>
-                </div>
+                
+                
             </div>
             <!-- /.panel-body -->
         </div>

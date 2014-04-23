@@ -11,7 +11,7 @@ var swig = require('swig'),
 module.exports = exports = function(app, passport, config) {
 
     // view engine setup
-    app.set('views', path.join(config.appPath, 'server/views'));
+    app.set('views', config.viewPath);
     app.set('view engine', 'html');
     app.engine('html', swig.renderFile);
 

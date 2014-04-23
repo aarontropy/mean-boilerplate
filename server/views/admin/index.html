@@ -1,13 +1,13 @@
-{% extends '../layouts/admin.html' %}
+{% extends 'layout.html' %}
 
 
 {% block content %}
     <div id="wrapper" ng-app="admin">
-        <div ng-include="'/adminApp/views/includes/navbar.html'"></div>
-        <div ng-include="'/adminApp/views/includes/sidebar.html'"></div>
+        <div ng-include="'/admin/views/includes/navbar.html'"></div>
+        <div ng-include="'/admin/views/includes/sidebar.html'"></div>
 
         <div id="page-wrapper">
-            <div ng-include="'/adminApp/views/includes/title.html'"></div>
+            <div ng-include="'/admin/views/includes/title.html'"></div>
 
             <div ui-view></div>
             <!-- /ui-view -->

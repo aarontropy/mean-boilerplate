@@ -9,9 +9,11 @@ var path = require('path'),
 // Make sure that the NODE_ENV has a value
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var modelsPath = path.normalize(__dirname + '/../models');
-var routesPath = path.normalize(__dirname + '/../routes');
-var assets = require('./assets.json');
+var modelsPath = path.normalize(__dirname + '/../models'),
+    routesPath = path.normalize(__dirname + '/../routes'),
+    appPath = path.normalize(__dirname + '/../..'),
+    viewPath = path.join(appPath,'server/views'),
+    assets = require('./assets.json');
 assetmanager.init(_.extend({
         debug: (process.env.NODE_ENV !== 'production'),
         webroot: 'public'
@@ -19,7 +21,8 @@ assetmanager.init(_.extend({
 );
 
 var all = {
-    appPath: path.normalize(__dirname + '/../..'),
+    appPath: appPath,
+    viewPath: viewPath,
     port: process.env.PORT || 3000,
     secret: 'big damn heros',
 
